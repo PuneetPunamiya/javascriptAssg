@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Tax Calculator</h1>
+        <form action="">
+            <label>Bill Amount</label>
+            <input id="billamt" type="text" placeholder="Add bill amount here">
+            <button type="button" onclick="calculate()">Calculate</button>
+        </form>
+        <div id="totalamt">
+        </div>
+    </div>
+    <script>
+        function calculate(){
+
+            var inp = document.getElementById("billamt").value;
+            if (inp == "") {
+                alert("Amount must be filled out");
+                return false
+            }
+            var billamt = new Number(inp);
+            var service = billamt * 0.1;
+            var gst = billamt * 0.05;
+            var tax = service + gst;
+            var final = billamt + tax;
+
+            var total = document.getElementById('totalamt')
+            total.style.display = 'block'
+
+            var details = `
+            <label> Service Charge(10%):<span>${service.toFixed(2)}</span> </label>
+            <label>GST(5%):<span>${gst.toFixed(2)}</span> </label>
+            <label>Total Tax:<span>${tax.toFixed(2)}</span> </label>
+            <label> Final Amount:<span>${final.toFixed(2)}</span> </label>
+            `
+            total.innerHTML = details
+        }
+        
+    </script>
+</body>
+</html>
