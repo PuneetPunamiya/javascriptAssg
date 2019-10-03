@@ -33,7 +33,7 @@
             }).map(city => {
                 var pos = city.search(val);
                 var html =
-                    `<li><span>${city.substring(0,pos)}<mark>${city.substring(pos,val.length)}</mark>${city.substring(val.length,city.length+1)}</span></li>`;
+                    `<li><span>${city.substring(0,pos)}<span class = "highlight">${city.substring(pos,pos+val.length)}</span>${city.substring(pos+val.length,city.length)}</span></li>`;
                 return html;
             }).join('');
             suggestion.innerHTML = _cities;
